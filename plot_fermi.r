@@ -1,7 +1,7 @@
 fermi_energy <- 4
 
 fermi <- function(E,temp){1/(1+exp((E-fermi_energy)/temp))}
-density_of_states <- function(E,temp){5*temp^1.5 * if(E>0){sqrt(E)}else{0}}
+density_of_states <- function(E,temp){0.5*if(E>0){sqrt(E)}else{0}}
 
 filename <- "dataset_fermi_1.dat"
 

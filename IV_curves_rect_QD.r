@@ -66,7 +66,7 @@ current <- function(voltage){
 }
 
 NV <- 200
-Vmin <- -1
+Vmin <- 0
 Vmax <- 4
 dV <- (Vmax-Vmin)/NV
 Vn <- Vmin + (1:NV)*dV

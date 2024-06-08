@@ -40,8 +40,8 @@ s0 <- sech(0,a)
 x_min <- -10
 x_max <- 10
 Nx <- 500
-N_particles <- 2000
-N_bins <- 20
+N_particles <- 100000
+N_bins <- 100
 # Exact functions for plotting
 dx <- (x_max-x_min)/Nx
 x <- x_min + (1:Nx)*dx - dx/2

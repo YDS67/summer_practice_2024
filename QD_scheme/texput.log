@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.10.22)  8 JUN 2024 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.10.22)  8 JUN 2024 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -541,15 +541,36 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\overline{e}$}
+*\setbox\ASYbox=\hbox{$E_0$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(4.65627pt)dim
+>dim(11.86807pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(6.30544pt)dim
+>dim(6.83331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.49998pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$n$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(6.00235pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(4.30554pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
@@ -617,6 +638,14 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(4.44841pt)dim
 
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
 *\setbox\ASYbox=\hbox{$I_{12}=-\frac{e}{\tau_{1}}n$}
 
 *
@@ -630,6 +659,14 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(4.44841pt)dim
 
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
 *\setbox\ASYbox=\hbox{$I_{21}=\frac{e}{\tau_{2}}n$}
 
 *
@@ -640,4 +677,169 @@ LaTeX Font Warning: Font shape `T2A/cmr/m/up' undefined
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(6.9512pt)dim
 
-*\immediate\writ
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$I_{22}=-\frac{e}{\tau_{2}}f_{2}\left(E_{0}\right)$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(74.6643pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(7.5pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$I_{11}=\frac{e}{\tau_{1}}f_{1}\left(E_{0}\right)$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(66.8865pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(7.5pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$I_{12}=-\frac{e}{\tau_{1}}n$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(49.97217pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.9512pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$I_{21}=\frac{e}{\tau_{2}}n$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(42.19437pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.9512pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$I_{22}=-\frac{e}{\tau_{2}}f_{2}\left(E_{0}\right)$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(74.6643pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(7.5pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.44841pt)dim
+
+*\fontsize{10}{12}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{T2A}{cmr}{m}{n}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\tau_1$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(8.85767pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(4.30554pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.49998pt)dim
+
+*\setbox\ASYbox=\hbox{$\tau_2$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(8.85767pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(4.30554pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.49998pt)dim
+
+*\setbox\ASYbox=\hbox{$E_0$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(11.86807pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.83331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.49998pt)dim
+
+*\setbox\ASYbox=\hbox{$n$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(6.00235pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(4.30554pt)dim
+
+*\immediate\write16{>dim(\the\dp\AS

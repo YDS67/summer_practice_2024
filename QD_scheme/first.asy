@@ -26,21 +26,23 @@ draw(qd_surface);
 fill(metal_surface_1 -- cycle, blue+opacity(opaque));
 fill(metal_surface_2 -- cycle, blue+opacity(opaque));
 
-draw("$I_{11}=\frac{e}{\tau_{1}}f_{1}\left(E_{0}\right)$", I11, arrow=Arrow(TeXHead), align=N);
-draw("$I_{12}=-\frac{e}{\tau_{1}}n$", I12, arrow=Arrow(TeXHead), align=N);
-draw("$I_{21}=\frac{e}{\tau_{2}}n$", I21, arrow=Arrow(TeXHead), align=N);
-draw("$I_{22}=-\frac{e}{\tau_{2}}f_{2}\left(E_{0}\right)$", I22, arrow=Arrow(TeXHead), align=N);
+draw(Label("$I_{11}=\frac{e}{\tau_{1}}f_{1}\left(E_{0}\right)$", align=3N, FillDraw(white, black)), I11, arrow=Arrow(DefaultHead));
+draw(Label("$I_{12}=-\frac{e}{\tau_{1}}n$", align=3N, FillDraw(white, black)), I12, arrow=Arrow(DefaultHead));
+draw(Label("$I_{21}=\frac{e}{\tau_{2}}n$", align=3N, FillDraw(white, black)), I21, arrow=Arrow(DefaultHead));
+draw(Label("$I_{22}=-\frac{e}{\tau_{2}}f_{2}\left(E_{0}\right)$", align=3N, FillDraw(white, black)), I22, arrow=Arrow(DefaultHead));
 
 //draw("d", dist, red, Arrows, align=N);
 //draw("a", qd_size, blue, Arrows, align=N);
 label("$\tau_1$", (1.1, 0.4*height-0.5), align=S);
 label("$\tau_2$", (1.9, 0.4*height-0.5), align=S);
 
-dot("$\overline{e}$", (1.5, 0.3*height), purple, align=N);
+draw("$E_0$", (1.1, 0.3*height) -- (1.9, 0.3*height), purple+dashed, align=N);
+label("$n$", (1.1, 0.3*height) -- (1.9, 0.3*height), align=S);
+
 dot("$\overline{e}$", (0.5, 0.3*height), black, align=N);
-draw((0.55, 0.3*height) -- (0.75, 0.3*height), arrow=Arrow(TeXHead), black+dashed);
+draw((0.55, 0.3*height) -- (0.75, 0.3*height), arrow=Arrow(SimpleHead), black+dashed);
 dot("$\overline{e}$", (2.2, 0.3*height), black, align=N);
-draw((2.25, 0.3*height) -- (2.45, 0.3*height), arrow=Arrow(TeXHead), black+dashed);
+draw((2.25, 0.3*height) -- (2.45, 0.3*height), arrow=Arrow(SimpleHead), black+dashed);
 
 real x0 = 1.5;
 real y0 = 0.5*height;

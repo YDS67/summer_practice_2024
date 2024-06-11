@@ -1,0 +1,714 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\rightmargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Tunnel diode
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+IV-curve (Esaki)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}T\left(E_{\perp}\right)\left[\ln\left(1+\exp\frac{E_{Fn}-E_{\perp}}{kT}\right)-\ln\left(1+\exp\frac{E_{Fp}-eV-E_{\perp}}{kT}\right)\right]dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Electrons
+\end_layout
+
+\begin_layout Standard
+Distribution of elecrons on the 
+\begin_inset Formula $n$
+\end_inset
+
+ side:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n\left(p_{\perp}\right)=\frac{2\cdot2\pi}{\left(2\pi\hbar\right)^{3}}\int_{0}^{\infty}\frac{p_{||}dp_{\parallel}}{1+\exp\frac{p_{c}^{2}+p_{\perp}^{2}-p_{F}^{2}+p_{\parallel}^{2}}{2m_{e}kT}}=\frac{m_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}\frac{du}{1+\exp\frac{p_{c}^{2}+p_{\perp}^{2}-p_{F}^{2}}{2m_{e}kT}e^{u}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n\left(p_{\perp}\right)dp_{\perp}=\frac{m_{e}kT}{2\pi^{2}\hbar^{3}}\ln\left(1+\exp\frac{p_{F}^{2}-p_{c}^{2}-p_{\perp}^{2}}{2m_{e}kT}\right)dp_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dp_{\perp}=\frac{\sqrt{m_{e}}}{\sqrt{2E_{\perp}}}dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+n\left(E_{\perp}\right)dE_{\perp}=\frac{m_{e}kT}{2\pi^{2}\hbar^{3}}\ln\left(1+\exp\frac{E_{F}-E_{c}-E_{\perp}}{kT}\right)\frac{\sqrt{m_{e}}}{\sqrt{2E_{\perp}}}dE_{\perp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v\left(E_{\perp}\right)=\frac{\sqrt{2E_{\perp}}}{\sqrt{m_{e}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+General formula for the current is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I\left(V\right)=e\int_{0}^{\infty}T\left(E_{\perp}\right)n\left(E_{\perp}\right)v\left(E_{\perp}\right)dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The majority electron current:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}T_{1}\left(E_{\perp}\right)\ln\left(1+\exp\frac{E_{F}-E_{c}-E_{\perp}}{kT}\right)dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Minority electron current will be different due to 
+\begin_inset Formula $E_{c}$
+\end_inset
+
+ on that side being raised by 
+\begin_inset Formula $\Delta\Phi$
+\end_inset
+
+ — the equilibrium energy barrier or the work function difference between
+ N and P semiconductors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}T_{2}\left(E_{\perp}\right)\ln\left(1+\exp\frac{E_{F}-E_{c}-\Delta\Phi-E_{\perp}}{kT}\right)dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, the transmission probabilities 
+\begin_inset Formula $T_{1},T_{2}$
+\end_inset
+
+ will also be different.
+ There's nothing preventing the minority electrons from reaching the N side,
+ so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{2}\left(E_{\perp}\right)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then the minority current doesn't depend on voltage and we can integrate
+ it:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}\ln\left(1+\exp\frac{E_{F}-E_{c}-\Delta\Phi-E_{\perp}}{kT}\right)dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, we have a similar dependence for 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+, which gives us:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{1}\left(E_{\perp}>\Delta\Phi-eV\right)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{\Delta\Phi-eV}^{\infty}\ln\left(1+\exp\frac{E_{F}-E_{c}-E_{\perp}}{kT}\right)dE_{\perp}=\int_{0}^{\infty}\ln\left(1+\exp\frac{E_{F}-E_{c}-\Delta\Phi+eV-E_{\perp}}{kT}\right)dE_{\perp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I_{e}\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\Delta\Phi-eV}T_{1}\left(E_{\perp}\right)\ln\left(1+\exp\frac{E_{F}-E_{c}-E_{\perp}}{kT}\right)dE_{\perp} & +\\
++\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}\left[\ln\left(1+\exp\frac{E_{F}-E_{c}+eV-\Delta\Phi-E_{\perp}}{kT}\right)-\ln\left(1+\exp\frac{E_{F}-E_{c}-\Delta\Phi-E_{\perp}}{kT}\right)\right]dE_{\perp} & .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity we assume that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}\ll1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then our expression for current simplifies to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+I\left(V\right)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\Delta\Phi-eV}T_{1}\left(E_{\perp}\right)\ln\left(1+\exp\frac{E_{F}-E_{c}-E_{\perp}}{kT}\right)dE_{\perp} & +\\
++\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}\left[\exp\left(\frac{eV}{kT}\right)-1\right]\int_{0}^{\infty}\exp\left(-\frac{E_{\perp}}{kT}\right)dE_{\perp} & .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I\left(V\right)=I_{1}\left(V\right)+I_{2}\left(V\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{1}\left(V\right)=A\int_{0}^{\Delta\Phi}T_{1}\left(kTu\right)\ln\left(1+w\left(0\right)e^{-u}\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{2}\left(V\right)=A\cdot w\left(-\Delta\Phi\right)\left[\exp\left(\frac{eV}{kT}\right)-1\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+A=\frac{em_{e}k^{2}T^{2}}{2\pi^{2}\hbar^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+w\left(eV\right)=\exp\frac{E_{F}-E_{c}+eV}{kT}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which clearly allows us to separate the two current contributions: a regular
+ diode current and the tunneling current.
+\end_layout
+
+\begin_layout Section
+Transmission probability
+\end_layout
+
+\begin_layout Standard
+It's easy to see that electrons can tunnel only into the valence band.
+ Then their energy should be below 
+\begin_inset Formula $E_{v}$
+\end_inset
+
+ on the P side.
+\end_layout
+
+\begin_layout Standard
+We can see that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E_{v}=E_{c}+\Delta\Phi-E_{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{1}\left(E_{\perp}>E_{v}-E_{c}-eV\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{1}\left(E_{\perp}>\Delta\Phi-E_{g}-eV\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we need to rewrite the tunneling current as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}\left(V\right)=A\int_{0}^{b}T_{1}\left(kTu\right)\ln\left(1+w\left(0\right)e^{-u}\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+b=\frac{\Delta\Phi-E_{g}-eV}{kT}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then for the rest we can use the usual formula for delta-function potential
+ barrier:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{1}\left(E\right)=\frac{E}{E+\frac{2m_{e}a^{2}}{\hbar^{2}}\left(\Delta\Phi-eV\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $a$
+\end_inset
+
+ is the width of the PN junction depletion layer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{N_{a}+N_{d}}{\sqrt{N_{a}N_{d}\left(N_{a}+N_{d}\right)}}=\sqrt{\frac{N_{a}+N_{d}}{N_{a}N_{d}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a^{2}=\frac{2\varepsilon_{0}\varepsilon}{e^{2}}\frac{N_{a}+N_{d}}{N_{a}N_{d}}\left(\Delta\Phi-eV\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{1}\left(u\right)=\frac{u}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W^{3}=\frac{e^{2}}{4\varepsilon_{0}\varepsilon}\frac{\hbar^{2}kT}{m_{e}}\frac{N_{a}N_{d}}{N_{a}+N_{d}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the final expression will become:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Full current:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I\left(V\right)=I_{1}\left(V\right)+I_{2}\left(V\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Tunneling current:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Diode current:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{2}\left(V\right)=A\cdot s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Parameters:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+A=\frac{em_{e}k^{2}T^{2}}{2\pi^{2}\hbar^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+w_{0}=\exp\frac{E_{F}-E_{c}}{kT}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+W^{3}=\frac{e^{2}}{4\varepsilon_{0}\varepsilon}\frac{\hbar^{2}kT}{m_{e}}\frac{N_{a}N_{d}}{N_{a}+N_{d}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Upper integration limit in the tunneling current depends on voltage:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+When 
+\begin_inset Formula $b$
+\end_inset
+
+ becomes negative, the tunneling current disappears! We should set it to
+ 0 and stop calculating the integral.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

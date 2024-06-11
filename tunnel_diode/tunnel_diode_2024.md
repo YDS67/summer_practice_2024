@@ -28,7 +28,7 @@ $$ $$
 
 Участок ОДП может быть использован для генераторов переменного тока (генераторов колебаний), потому что он позволяет компенсировать внутреннее сопротивление цепи и избежать затухания колебаний.
 
-# Обзор литературы
+# Теория
 
 Ток через туннельный диод можно рассчитать по формуле Эсаки [2].
 
@@ -47,8 +47,6 @@ $$ $$
 
 ![Рисунок 4. Энергетический барьер.](images/diode-scheme-3.png){width=250px}
 
-$$ $$
-
 Самый простой вид имеет коэффициент прохождения для очень узкого барьера в виде дельта-функции:
 
 $$U(x)=\alpha \delta(x),\qquad \alpha = Ha \tag{2}$$
@@ -57,72 +55,6 @@ $$U(x)=\alpha \delta(x),\qquad \alpha = Ha \tag{2}$$
 Для неё вероятность прохождения имеет вид:
 
 $$T_c(E)=\frac{E}{E+\frac{m_e \alpha^2}{2\hbar^2}} \tag{3}$$
-
-# Основные формулы
-
-## Константы
-
-| Обозначение | Формула | Переменная | Значение | Единицы | 
-| :---: | :---: | :---: | :---: | :---: |
-| $k$ | $k$  | k_boltzmann  | 8.62e-5  | эВ$\cdot$K$^{-1}$  |
-| $q$ | $\displaystyle \frac{e}{\hbar}$  | e_h  | 2.43e-4  | Кл$\cdot$эВ$^{-1}\cdot$сек$^{-1}$ |
-| $K$ | $\displaystyle \frac{\hbar^2}{m_0}$  | h2_m0  | 0.0762  | эВ$\cdot$нм$^2$  |
-| $C$ | $\displaystyle \frac{e^2}{4\pi \varepsilon_0}$  | e2_4pieps0  | 1.44  | эВ$\cdot$нм  |
-
-## Исходные параметры
-
-| Величина  | Обозначение | Переменная | Диапазон | Значение | Единицы | 
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| Ширина запр. зоны  | $E_g$  | band_gap  | 0.2-2  | 1.12  | эВ  |
-| Эфф. масса эл.  | $m_e$  | eff_mass_e  | 0.01-1  | 0.19  | $m_0$  |
-| Эфф. масса дыр.  | $m_h$  | eff_mass_h  | 0.01-1  | 0.49  | $m_0$  |
-| Диэлектр. прониц.  | $\varepsilon$  | dielectric  | 1-15  | 11.7  | -  |
-| Температура  | $T$  | temperature  | 4-400  | 300  | К  |
-| Конц. доноров  | $N_d$  | donor_conc  | 1e17-1e19  | 1e19  | см$^{-3}$  |
-| Конц. акцепторы  | $N_a$  | accept_conc  | 1e17-1e19  | 1e19  | см$^{-3}$  |
-
-## Вторичные параметры
-
-| Обозначение | Формула | Переменная | Единицы | 
-| :---: | :---: | :---: | :---: |
-| $N_c$ | $\displaystyle 2 \cdot \left( \frac{m_e kT}{2\pi \hbar^2} \right)^{3/2}$  | n_c  | см$^{-3}$  |
-| $N_v$ | $\displaystyle 2 \cdot \left( \frac{m_h kT}{2\pi \hbar^2} \right)^{3/2}$  | n_v  | см$^{-3}$  |
-| $E_{Fn}-E_c$ | $\displaystyle kT \ln \left( \frac{N_d}{N_c} \right)$  | fermi_n  | эВ  |
-| $E_{Fp}-E_v$ | $\displaystyle kT \ln \left( \frac{N_v}{N_a} \right)$  | fermi_p  | эВ  |
-| $\Delta \Phi$ | $\displaystyle E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_g$  | delta_phi  | эВ  |
-| $W^3$ | $\displaystyle \frac{\pi C K k T}{m_e} \frac{N_a N_d}{N_a+N_d}$  | transmission_parameter  | эВ$^3$  |
-| $A$ | $\displaystyle \frac{q m_e k^{2}T^{2}}{2\pi^2K}$  | richardson_constant  | A$\cdot$м$^{-2}$  |
-
-### Пояснение параметров
-
-$$E_{Fn}-E_{Fp} = E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_c-E_v= E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_g$$
-
-$$W^3 = \frac{e^{2}}{4\varepsilon_{0}\varepsilon}\frac{\hbar^{2}kT}{m_{e}}\frac{N_{a}N_{d}}{N_{a}+N_{d}}$$
-
-$$A = \frac{1}{2\pi^2} \frac{e}{\hbar} \frac{m_e k^{2}T^{2}}{\hbar^2} = \frac{q m_e k^{2}T^{2}}{2\pi^2K}$$
-
-## Окончательные формулы
-
-### Общий ток
-
-$$I\left(V\right)=I_{1}\left(V\right)+I_{2}\left(V\right)$$
-
-### Туннельный ток
-
-$$I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du$$
-
-### Диодный ток
-
-$$I_{2}\left(V\right)=A\cdot s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right]$$
-
-### Параметры
-
-$$w_{0}=\exp\frac{E_{F}-E_{c}}{kT}$$
-$$s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}$$
-
-Верхний предел интегрирования туннельного тока станет равным нулю для предельного значения напряжения, после которого туннелирование полностью прекратится. После этого надо учитывать только диодный ток.
-
-$$b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g}$$
 
 
 # Литература

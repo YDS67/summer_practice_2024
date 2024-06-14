@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tauri App</title>
+  <script type="module" src="/main.js" defer></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+    id="MathJax-script"></script>
+</head>
+
+<body>
+
+  <form id="input-form">
+    <div class="container">
+      <div><label for="input-eg">\(E_g,~eV\)</label>
+        <input id="input-eg" value="0.721" /></div>
+      <div><label for="input-emin">\(E_{min},~eV\)</label>
+        <input id="input-emin" value="0.65" /></div>
+      <div><label for="input-emax">\(E_{max},~eV\)</label>
+        <input id="input-emax" value="1.25" /></div>
+      <div><label for="input-hg">\(\gamma,~eV\)</label>
+        <input id="input-hg" value="0.002" /></div>
+      <div><label for="input-r">\(R,~r_{ex}\)</label>
+        <input id="input-r" value="20" /></div>
+      <div><label for="input-dr">\(\Delta r,~r_{ex}\)</label>
+        <input id="input-dr" value="0.1" /></div>
+    </div>
+    <div style="text-align: center; margin-bottom: 2vh;"><button type="submit">Calculate</button></div>
+  </form>
+    <p style="text-align: center;" id="result"></p>
+</body>
+
+</html>

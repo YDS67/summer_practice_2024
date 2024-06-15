@@ -3,8 +3,8 @@ title: "Tunnel diode 2024"
 author: "YDS"
 date: "2024-06-10"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Введение
@@ -34,7 +34,8 @@ $$ $$
 
 Ток через туннельный диод можно рассчитать по формуле Эсаки [2].
 
-$$I(V)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}T_{c}\left(E_{\perp}\right)\left[\ln\left(1+\exp\frac{E_{Fn}+eV-E_{\perp}}{kT}\right)-\ln\left(1+\exp\frac{E_{Fp}-E_{\perp}}{kT}\right)\right]\mathrm{d}E_{\perp}$$
+$$I(V)=\frac{em_{e}kT}{2\pi^{2}\hbar^{3}}\int_{0}^{\infty}T_{c}\left(E_{\perp}\right)\left[\ln\left(1+\exp\frac{E_{Fn}+eV-E_{\perp}}{kT}\right)-\ln\left(1+\exp\frac{E_{Fp}-E_{\perp}}{kT}\right)\right]\mathrm{d}E_{\perp} \tag{1}$$
+
 Где $T_c$ --- вероятность (коэффициент) прохождения электронов через барьер, $E_{\perp}$ --- кинетическая энергия электронов в направлении границы между P и N областями, которая отсчитывается от дна зоны проводимости $E_c$.
 
 Логарифмы описывают распределение электронов по энергиям в P и N областях.
@@ -54,6 +55,7 @@ $$ $$
 Самый простой вид имеет коэффициент прохождения для очень узкого барьера в виде дельта-функции:
 
 $$U(x)=\alpha \delta(x),\qquad \alpha = Ha \tag{2}$$
+
 где $H$ --- высота барьера в единицах энергии (эВ), а $a$ --- ширина барьера (например, в нм).
 
 Для неё вероятность прохождения имеет вид:
@@ -103,32 +105,44 @@ $$2 \cdot \left( \frac{m_h m_0 kT}{2\pi \hbar^2} \right)^{3/2} = 2 \cdot \left( 
 
 $$E_{Fn}-E_{Fp} = E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_c-E_v= E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_g$$
 
-$$W^3 = \frac{e^{2}}{4\varepsilon_{0}\varepsilon}\frac{\hbar^{2}kT}{m_{e}}\frac{N_{a}N_{d}}{N_{a}+N_{d}}$$
+$$W^3 = \frac{e^{2}}{4\varepsilon_{0}\varepsilon}\frac{\hbar^{2}kT}{m_{e}}\frac{N_{a}N_{d}}{N_{a}+N_{d}} \tag{4}$$
 
-$$A = \frac{1}{2\pi^2} \frac{e}{\hbar} \frac{m_e k^{2}T^{2}}{\hbar^2} = \frac{q m_e k^{2}T^{2}}{2\pi^2K}$$
+$$A = \frac{1}{2\pi^2} \frac{e}{\hbar} \frac{m_e k^{2}T^{2}}{\hbar^2} = \frac{q m_e k^{2}T^{2}}{2\pi^2K} \tag{5}$$
 
 ## Окончательные формулы
 
 ### Общий ток
 
-$$I\left(V\right)=I_{1}\left(V\right)+I_{2}\left(V\right)$$
+$$I\left(V\right)=I_{1}\left(V\right)+I_{2}\left(V\right) \tag{6}$$
 
 ### Туннельный ток
 
-$$I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du$$
+$$I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du \tag{7}$$
 
 ### Диодный ток
 
-$$I_{2}\left(V\right)=A\cdot s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right]$$
+$$I_{2}\left(V\right)=A\cdot s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right] \tag{8}$$
 
 ### Параметры
 
-$$w_{0}=\exp\frac{E_{F}-E_{c}}{kT}$$
-$$s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}$$
+$$w_{0}=\exp\frac{E_{F}-E_{c}}{kT} \tag{9}$$
+$$s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT} \tag{10}$$
+
+### Предел интегрирования
 
 Верхний предел интегрирования туннельного тока станет равным нулю для предельного значения напряжения, после которого туннелирование полностью прекратится. После этого надо учитывать только диодный ток.
 
-$$b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g}$$
+$$b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g} \tag{11}$$
+
+Для численного интегрирования удобнее заменить переменную следующим образом:
+
+$$u = b r$$
+
+Тогда верхний предел интегрирования станет равен 1, и интеграл пример вид:
+
+$$I_{1}\left(V\right)=A b^2 \int_{0}^{1}\frac{r\ln\left(1+w_{0}e^{-br}\right)}{br+\left(\Delta\Phi-eV\right)^{3}/W^{3}}dr \tag{12}$$
+
+Теперь можно использовать методы численного интегрирования, к примеру квадратуры Гаусса-Лежандра или квадратуры Гаусса-Кронрода.
 
 
 # Литература

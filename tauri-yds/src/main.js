@@ -1,52 +1,47 @@
 const { invoke } = window.__TAURI__.tauri;
 
-let Eg;
-let Emin;
-let Emax;
-let Hg;
-let R;
-let dR;
+let initialParameters = new Array();
+let inputElements = new Array();
+let inputLabels = new Array();
 
+let setupSent;
 let result;
-
-let EgEl;
-let EminEl;
-let EmaxEl;
-let HgEl;
-let REl;
-let dREl;
-
 let resultEl;
+let paramsNum = 10;
+let dummyString;
+
+async function setup() {
+  setupSent = await invoke("setup");
+  for (let i = 0; i < paramsNum; i++) {
+    inputElements[i].value = setupSent.values[i];
+    inputLabels[i].innerHTML = setupSent.labels[i];
+  }
+
+  resultEl.innerHTML = "<p>Default values loaded</p>";
+}
 
 async function spectrum() {
-  // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-  Eg = EgEl.value;
-  Emin = EminEl.value;
-  Emax = EmaxEl.value;
-  Hg = HgEl.value;
-  R = REl.value;
-  dR = dREl.value;
-  result = await invoke("spectrum", {
-    egInp: Eg,
-    eminInp: Emin,
-    emaxInp: Emax,
-    hgInp: Hg,
-    rInp: R,
-    drInp: dR,
+  for (let i = 0; i < paramsNum; i++) {
+    initialParameters[i] = inputElements[i].value;
+  }
+  result = await invoke("calculate", {
+    dataFromUser: initialParameters,
   });
 
   resultEl.innerHTML = result.s;
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  EgEl = document.querySelector("#input-eg");
-  EmaxEl = document.querySelector("#input-emax");
-  EminEl = document.querySelector("#input-emin");
-  HgEl = document.querySelector("#input-hg");
-  REl = document.querySelector("#input-r");
-  dREl = document.querySelector("#input-dr");
 
+  for (let i = 1; i < paramsNum+1; i++) {
+    dummyString = "#input-" + i;
+    inputElements[i-1] = document.querySelector(dummyString);
+    dummyString = "#label-" + i;
+    inputLabels[i-1] = document.querySelector(dummyString);
+  }
   resultEl = document.querySelector("#result");
+
+  setup();
 
   document.querySelector("#input-form").addEventListener("submit", (e) => {
     e.preventDefault();

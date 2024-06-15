@@ -67,7 +67,7 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
     let gridcol = Rgb::new(220, 220, 220);
     let transp = NamedColor::Transparent;
     let thick: usize = 3;
-    let medium: usize = 4;
+    let medium: usize = 6;
     let _thin: usize = 2;
     let msize: usize = 10;
     let fsz_title: usize = (19.0*plot_par.font_scale) as usize;
@@ -178,7 +178,7 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         LegendAl::CenterRight => legend_center_right,
         LegendAl::TopCenter => legend_top_center,
     }.font(Font::new().size(fsz_legend).color(forecol).family(&plot_par.font_family))
-        .border_width(medium)
+        .border_width(thick)
         .border_color(forecol)
         .background_color(bgcol)
         .item_width(52)
@@ -195,7 +195,7 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         .tick_font(Font::new().color(forecol))
         .zero_line(false)
         .show_grid(true)
-        .grid_color(gridcol);
+        .grid_color(gridcol).auto_margin(true);
 
     let axisx = axis.clone().title(
         Title::new(&plot_par.xlab)
@@ -205,7 +205,7 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         .clone()
         .title(Title::new(&plot_par.ylab)
             .font(Font::new().size(fsz_axes).color(forecol).family(&plot_par.font_family)))
-        .tick_angle(270.0);
+        .tick_angle(0.0).exponent_format(plotly::common::ExponentFormat::SmallE); //.type_(plotly::layout::AxisType::Log);
 
     let line_top = Shape::new()
         .shape_type(ShapeType::Line)
@@ -228,8 +228,8 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         .line(ShapeLine::new().color(forecol).width(thick as f64));
 
     let mut layout = Layout::new()
-        .width(1024)
-        .height(768)
+        .width(plot_par.width)
+        .height(plot_par.height)
         .font(Font::new().size(fsz_ticks))
         .title(title)
         .legend(legend)
@@ -237,8 +237,8 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         .x_axis(axisx)
         .y_axis(axisy)
         .plot_background_color(transp)
-        .paper_background_color(bgcol)
-        .margin(Margin::new().left(105).bottom(105));
+        .paper_background_color(bgcol);
+        //.margin(Margin::new().left(250).bottom(120));
 
     layout.add_shape(line_top);
     layout.add_shape(line_right);

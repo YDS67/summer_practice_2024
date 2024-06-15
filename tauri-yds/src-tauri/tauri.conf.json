@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "Spectrum2D",
+    "productName": "TunnelDiodeYDS",
     "version": "0.0.0"
   },
   "tauri": {
@@ -34,9 +34,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "2D Exciton Spectrum",
+        "title": "Tunnel Diode Model",
         "width": 600,
-        "height": 800
+        "height": 900
       }
     ]
   }

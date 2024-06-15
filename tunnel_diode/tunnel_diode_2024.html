@@ -536,7 +536,7 @@ display: none;
 <tr class="even">
 <td align="center">Диэлектр. прониц.</td>
 <td align="center"><span class="math inline">\(\varepsilon\)</span></td>
-<td align="center">dielectric</td>
+<td align="center">dielectric_eps</td>
 <td align="center">1 – 15</td>
 <td align="center">11.7</td>
 <td align="center">-</td>
@@ -565,8 +565,27 @@ display: none;
 <td align="center">0.1</td>
 <td align="center">нм<span class="math inline">\(^{-3}\)</span></td>
 </tr>
+<tr class="even">
+<td align="center">Минимальное напряжение</td>
+<td align="center"><span class="math inline">\(V_{min}\)</span></td>
+<td align="center">voltage_min</td>
+<td align="center">-2 – 0</td>
+<td align="center">-0.5</td>
+<td align="center">В</td>
+</tr>
+<tr class="odd">
+<td align="center">Максимальное напряжение</td>
+<td align="center"><span class="math inline">\(V_{max}\)</span></td>
+<td align="center">voltage_max</td>
+<td align="center">0 – 5</td>
+<td align="center">2</td>
+<td align="center">В</td>
+</tr>
 </tbody>
 </table>
+<p>Примечание: т.к. напряжение указываетс в волтах, а энергия — в
+электрон-вольтах, везде где в формулах присутствует <span class="math inline">\(eV\)</span> можно использовать просто <span class="math inline">\(v\)</span>, на заряд электрона умножать не
+нужно.</p>
 </div>
 <div id="вторичные-параметры" class="section level2">
 <h2>Вторичные параметры</h2>
@@ -624,7 +643,7 @@ E_c -\left(E_{Fp} - E_v \right) +E_g\)</span></td>
 <tr class="even">
 <td align="center"><span class="math inline">\(W^3\)</span></td>
 <td align="center"><span class="math inline">\(\displaystyle \frac{\pi C
-K k T}{m_e} \frac{N_a N_d}{N_a+N_d}\)</span></td>
+K k T}{m_e \varepsilon} \frac{N_a N_d}{N_a+N_d}\)</span></td>
 <td align="center">transmission_parameter</td>
 <td align="center">эВ<span class="math inline">\(^3\)</span></td>
 </tr>
@@ -634,6 +653,20 @@ K k T}{m_e} \frac{N_a N_d}{N_a+N_d}\)</span></td>
 k^{2}T^{2}}{2\pi^2K}\)</span></td>
 <td align="center">richardson_constant</td>
 <td align="center">A<span class="math inline">\(\cdot\)</span>нм<span class="math inline">\(^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(w_{0}\)</span></td>
+<td align="center"><span class="math inline">\(\displaystyle
+\exp\frac{E_{Fn}-E_{c}}{kT}\)</span></td>
+<td align="center">w_0</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(s_{0}\)</span></td>
+<td align="center"><span class="math inline">\(\displaystyle
+\exp\frac{E_{Fn}-E_{c}-\Delta\Phi}{kT}\)</span></td>
+<td align="center">s_0</td>
+<td align="center">-</td>
 </tr>
 </tbody>
 </table>
@@ -673,19 +706,13 @@ k^{2}T^{2}}{2\pi^2K}\)</span></td>
 <p><span class="math display">\[I_{2}\left(V\right)=A\cdot
 s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right] \tag{8}\]</span></p>
 </div>
-<div id="параметры" class="section level3">
-<h3>Параметры</h3>
-<p><span class="math display">\[w_{0}=\exp\frac{E_{F}-E_{c}}{kT}
-\tag{9}\]</span> <span class="math display">\[s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT}
-\tag{10}\]</span></p>
-</div>
 <div id="предел-интегрирования" class="section level3">
 <h3>Предел интегрирования</h3>
 <p>Верхний предел интегрирования туннельного тока станет равным нулю для
 предельного значения напряжения, после которого туннелирование полностью
 прекратится. После этого надо учитывать только диодный ток.</p>
 <p><span class="math display">\[b=\frac{\Delta\Phi-E_{g}-eV}{kT}&gt;0,\qquad
-eV&lt;\Delta\Phi-E_{g} \tag{11}\]</span></p>
+eV&lt;\Delta\Phi-E_{g} \tag{9}\]</span></p>
 <p>Для численного интегрирования удобнее заменить переменную следующим
 образом:</p>
 <p><span class="math display">\[u = b r\]</span></p>
@@ -693,7 +720,7 @@ eV&lt;\Delta\Phi-E_{g} \tag{11}\]</span></p>
 вид:</p>
 <p><span class="math display">\[I_{1}\left(V\right)=A b^2
 \int_{0}^{1}\frac{r\ln\left(1+w_{0}e^{-br}\right)}{br+\left(\Delta\Phi-eV\right)^{3}/W^{3}}dr
-\tag{12}\]</span></p>
+\tag{10}\]</span></p>
 <p>Теперь можно использовать методы численного интегрирования, к примеру
 квадратуры Гаусса-Лежандра или квадратуры Гаусса-Кронрода.</p>
 </div>

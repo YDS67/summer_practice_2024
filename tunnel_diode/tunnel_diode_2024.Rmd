@@ -5,6 +5,7 @@ date: "2024-06-10"
 output:
   html_document: default
   pdf_document: default
+  word_document: default
 ---
 
 # Введение
@@ -80,10 +81,14 @@ $$T_c(E)=\frac{E}{E+\frac{m_e \alpha^2}{2\hbar^2}} \tag{3}$$
 | Ширина запр. зоны  | $E_g$  | band_gap  | 0.2 -- 2  | 1.12  | эВ  |
 | Эфф. масса эл.  | $m_e$  | eff_mass_e  | 0.01 -- 1  | 0.19  | $m_0$  |
 | Эфф. масса дыр.  | $m_h$  | eff_mass_h  | 0.01 -- 1  | 0.49  | $m_0$  |
-| Диэлектр. прониц.  | $\varepsilon$  | dielectric  | 1 -- 15  | 11.7  | -  |
+| Диэлектр. прониц.  | $\varepsilon$  | dielectric_eps  | 1 -- 15  | 11.7  | -  |
 | Температура  | $T$  | temperature  | 4 -- 400  | 300  | К  |
 | Конц. доноров  | $N_d$  | donor_conc  | 1e-4 -- 0.1  | 0.1  | нм$^{-3}$  |
 | Конц. акцепторов  | $N_a$  | accept_conc  | 1e-4 -- 0.1  | 0.1  | нм$^{-3}$  |
+| Минимальное напряжение  | $V_{min}$  | voltage_min  | -2 -- 0  | -0.5 | В  |
+| Максимальное напряжение  | $V_{max}$  | voltage_max  | 0 -- 5  | 2 | В  |
+
+Примечание: т.к. напряжение указываетс в волтах, а энергия --- в электрон-вольтах, везде где в формулах присутствует $eV$ можно использовать просто $v$, на заряд электрона умножать не нужно.
 
 ## Вторичные параметры
 
@@ -94,8 +99,10 @@ $$T_c(E)=\frac{E}{E+\frac{m_e \alpha^2}{2\hbar^2}} \tag{3}$$
 | $E_{Fn}-E_c$ | $\displaystyle kT \ln \left( \frac{N_d}{N_c} \right)$  | fermi_n  | эВ  |
 | $E_{Fp}-E_v$ | $\displaystyle kT \ln \left( \frac{N_v}{N_a} \right)$  | fermi_p  | эВ  |
 | $\Delta \Phi$ | $\displaystyle E_{Fn} - E_c -\left(E_{Fp} - E_v \right) +E_g$  | delta_phi  | эВ  |
-| $W^3$ | $\displaystyle \frac{\pi C K k T}{m_e} \frac{N_a N_d}{N_a+N_d}$  | transmission_parameter  | эВ$^3$  |
+| $W^3$ | $\displaystyle \frac{\pi C K k T}{m_e \varepsilon} \frac{N_a N_d}{N_a+N_d}$  | transmission_parameter  | эВ$^3$  |
 | $A$ | $\displaystyle \frac{q m_e k^{2}T^{2}}{2\pi^2K}$  | richardson_constant  | A$\cdot$нм$^{-2}$  |
+| $w_{0}$ | $\displaystyle \exp\frac{E_{Fn}-E_{c}}{kT}$  | w_0  | -  |
+| $s_{0}$ | $\displaystyle \exp\frac{E_{Fn}-E_{c}-\Delta\Phi}{kT}$  | s_0  | -  |
 
 ### Пояснение параметров
 
@@ -123,16 +130,11 @@ $$I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left
 
 $$I_{2}\left(V\right)=A\cdot s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right] \tag{8}$$
 
-### Параметры
-
-$$w_{0}=\exp\frac{E_{F}-E_{c}}{kT} \tag{9}$$
-$$s_{0}=\exp\frac{E_{F}-E_{c}-\Delta\Phi}{kT} \tag{10}$$
-
 ### Предел интегрирования
 
 Верхний предел интегрирования туннельного тока станет равным нулю для предельного значения напряжения, после которого туннелирование полностью прекратится. После этого надо учитывать только диодный ток.
 
-$$b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g} \tag{11}$$
+$$b=\frac{\Delta\Phi-E_{g}-eV}{kT}>0,\qquad eV<\Delta\Phi-E_{g} \tag{9}$$
 
 Для численного интегрирования удобнее заменить переменную следующим образом:
 
@@ -140,7 +142,7 @@ $$u = b r$$
 
 Тогда верхний предел интегрирования станет равен 1, и интеграл пример вид:
 
-$$I_{1}\left(V\right)=A b^2 \int_{0}^{1}\frac{r\ln\left(1+w_{0}e^{-br}\right)}{br+\left(\Delta\Phi-eV\right)^{3}/W^{3}}dr \tag{12}$$
+$$I_{1}\left(V\right)=A b^2 \int_{0}^{1}\frac{r\ln\left(1+w_{0}e^{-br}\right)}{br+\left(\Delta\Phi-eV\right)^{3}/W^{3}}dr \tag{10}$$
 
 Теперь можно использовать методы численного интегрирования, к примеру квадратуры Гаусса-Лежандра или квадратуры Гаусса-Кронрода.
 

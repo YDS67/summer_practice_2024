@@ -1,5 +1,5 @@
 [package]
-name = "spectrum2d"
+name = "tunnel_diode_yds"
 version = "0.0.0"
 description = "A Tauri App"
 authors = ["you"]
@@ -15,7 +15,6 @@ tauri-build = { version = "1.5", features = [] }
 [dependencies]
 tauri = { version = "1.5", features = ["shell-open"] }
 serde = { version = "1.0", features = ["derive"] }
-num = "0.4.1"
 plotly = { version = "0.8.4", features = ["kaleido"] }
 open = "5.1.4"
 

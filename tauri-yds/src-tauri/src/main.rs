@@ -8,6 +8,7 @@ mod plot;
 mod file;
 
 use std::path::PathBuf;
+use consts::TOLERANCE;
 use serde::{Deserialize, Serialize};
 use state::State;
 
@@ -16,8 +17,8 @@ use state::State;
 #[derive(Serialize, Deserialize, Debug)]
 struct InitialMessage {
     num: usize,
-    values: [f64; 10],
-    labels: [String; 10],
+    values: [f64; 11],
+    labels: [String; 11],
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -33,11 +34,12 @@ fn setup() -> Result<InitialMessage, String> {
         0.49,
         11.7,
         300.0,
-        0.1,
+        0.2,
         0.3,
         -0.5,
-        1.1,
+        1.5,
         500.0,
+        15.0,
     ];
     let input_labels = [
         r"\( E_g, ~eV \)".to_string(),
@@ -50,9 +52,10 @@ fn setup() -> Result<InitialMessage, String> {
         r"\( V_{min}, ~V \)".to_string(),
         r"\( V_{max}, ~V \)".to_string(),
         r"\( N_{points} \)".to_string(),
+        r"Plot maximum".to_string(),
     ];
     Ok(InitialMessage {
-        num: 10,
+        num: 11,
         values: input_values,
         labels: input_labels,
     })
@@ -97,13 +100,18 @@ fn calculate(
             format!("Total current"),
         ],
     );
-    plot_par.legend_al = plot::LegendAl::TopLeft;
+    plot_par.legend_al = plot::LegendAl::CenterRight;
     plot_par.colors[0] = plot::COLORS[1];
     plot_par.colors[1] = plot::COLORS[2];
     plot_par.colors[2] = plot::COLORS[0];
     plot_par.dashes[2] = plot::DASHTYPES[1].clone();
-    file::save_columns_to_file(&vec![x.clone(), y1.clone(), y2.clone(), y3.clone()], &format!("{}.dat", &plot_par.flnm));
-    plot::line_plot(&vec![x; 3], &vec![y1, y2, y3], &plot_par);
+    if state.initial_parameters.plot_max > TOLERANCE {
+        plot_par.range_y[1] = state.initial_parameters.plot_max
+    }
+    plot::line_plot(&vec![x.clone(); 3], &vec![y1.clone(), y2.clone(), y3.clone()], &plot_par);
+
+    file::save_columns_to_file(&vec![x, y1, y2, y3], &format!("{}.dat", &plot_par.flnm));
+
     let mut s;
     let current_dir_result = std::env::current_dir();
     let current_dir;

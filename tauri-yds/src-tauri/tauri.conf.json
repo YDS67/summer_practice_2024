@@ -35,8 +35,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "Tunnel Diode Model",
-        "width": 600,
-        "height": 900
+        "width": 1200,
+        "height": 700
       }
     ]
   }

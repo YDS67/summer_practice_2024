@@ -7,7 +7,7 @@ let inputLabels = new Array();
 let setupSent;
 let result;
 let resultEl;
-let paramsNum = 10;
+let paramsNum = 11;
 let dummyString;
 
 async function setup() {

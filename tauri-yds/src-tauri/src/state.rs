@@ -17,11 +17,12 @@ impl State {
                 eff_mass_h: 0.49,
                 dielectric_eps: 11.7,
                 temperature: 300.0,
-                donor_conc: 0.1,
-                accept_conc: 0.1,
-                voltage_min: -0.5,
-                voltage_max: 1.0,
+                donor_conc: 0.2,
+                accept_conc: 0.3,
+                voltage_min: -0.4,
+                voltage_max: 1.1,
                 voltage_points: 100,
+                plot_max: 0.0,
             },
             secondary_parameters: SecondaryParameters {
                 n_c: 0.0,
@@ -36,6 +37,7 @@ impl State {
             },
             variable_data: VariableData {
                 voltage: 0.0,
+                lower_limit_a: 0.0,
                 upper_limit_b: 0.0,
             },
             calculation_resuts: CalculationResults {
@@ -57,6 +59,7 @@ impl State {
         self.initial_parameters.voltage_min = parameters[7];
         self.initial_parameters.voltage_max = parameters[8];
         self.initial_parameters.voltage_points = parameters[9] as usize;
+        self.initial_parameters.plot_max = parameters[10];
         self.calculation_resuts = CalculationResults {
             voltage: vec![0.0; self.initial_parameters.voltage_points],
             total_current: vec![0.0; self.initial_parameters.voltage_points],
@@ -108,23 +111,32 @@ impl State {
         self.calculation_resuts.diode_current = self.calculation_resuts.voltage.clone()
             .into_iter().map(|v| 
                 self.secondary_parameters.richardson_constant * self.secondary_parameters.s_0
-                * (v / K_BOLTZMANN / self.initial_parameters.temperature).exp()
+                * ((v / K_BOLTZMANN / self.initial_parameters.temperature).exp() - 1.0)
             ).collect()
     }
     // Tunnel current calculations
-    fn find_upper_limit(&mut self) {
+    fn find_integration_limits(&mut self) {
         self.variable_data.upper_limit_b = (self.secondary_parameters.delta_phi - self.initial_parameters.band_gap - self.variable_data.voltage)
             / K_BOLTZMANN / self.initial_parameters.temperature;
         if self.variable_data.upper_limit_b < 0.0 {
             self.variable_data.upper_limit_b = 0.0
         }
+        self.variable_data.lower_limit_a = (self.secondary_parameters.delta_phi - self.initial_parameters.band_gap - self.variable_data.voltage + self.secondary_parameters.fermi_p)
+        / K_BOLTZMANN / self.initial_parameters.temperature - 3.0;
+        if self.variable_data.lower_limit_a < 0.0 {
+            self.variable_data.lower_limit_a = 0.0
+        }
     }
     pub fn fill_tunnel_current(&mut self) {
         for jv in 0..self.initial_parameters.voltage_points {
             self.variable_data.voltage = self.calculation_resuts.voltage[jv];
-            self.find_upper_limit();
+            self.find_integration_limits();
             self.calculation_resuts.tunnel_current[jv] = self.secondary_parameters.richardson_constant
-                * eval_integral(&self, &function_to_integrate)
+                * eval_integral(&self, 
+                    &function_to_integrate,
+                    self.variable_data.lower_limit_a,
+                    self.variable_data.upper_limit_b
+                )
         }
     }
     pub fn fill_total_current(&mut self) {
@@ -146,6 +158,7 @@ pub struct InitialParameters {
     pub voltage_min: f64,
     pub voltage_max: f64,
     pub voltage_points: usize,
+    pub plot_max: f64,
 }
 
 pub struct SecondaryParameters {
@@ -162,6 +175,7 @@ pub struct SecondaryParameters {
 
 pub struct VariableData {
     pub voltage: f64,
+    pub lower_limit_a: f64,
     pub upper_limit_b: f64,
 }
 
@@ -173,11 +187,9 @@ pub struct CalculationResults {
 }
 
 fn function_to_integrate(state: &State, x: f64) -> f64 {
-    state.variable_data.upper_limit_b.powi(2) * x 
-        * (1.0 + state.secondary_parameters.w_0 * (-state.variable_data.upper_limit_b*x).exp()).ln()
+    x * (1.0 + state.secondary_parameters.w_0 * (-x).exp()).ln()
         / (
-            state.variable_data.upper_limit_b*x 
-            + (state.secondary_parameters.delta_phi - state.variable_data.voltage).powi(3)
+            x + (state.secondary_parameters.delta_phi - state.variable_data.voltage).powi(3)
             / state.secondary_parameters.transmission_parameter
         )
 }

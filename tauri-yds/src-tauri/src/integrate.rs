@@ -1,10 +1,12 @@
 // Integrate from 0 to 1 using Gauss-Kronrod quadrature rule
 use crate::state::State;
 
-pub fn eval_integral(state: &State, function: &dyn Fn(&State, f64) -> f64) -> f64 {
+pub fn eval_integral(state: &State, function: &dyn Fn(&State, f64) -> f64, lower: f64, upper: f64) -> f64 {
     let mut int = 0.0;
     for n in 0..N_NODES {
-        int += function(&state, (1.0+KRONROD_NODES_21[n])/2.0)*KRONROD_WEIGHTS_21[n]/2.0
+        int += function(&state, 
+            lower+(1.0+KRONROD_NODES_21[n])*(upper-lower)/2.0)
+            *KRONROD_WEIGHTS_21[n]*(upper-lower)/2.0
     }
     int
 }

@@ -1,7 +1,7 @@
 use plotly::color::{NamedColor, Rgb};
 use plotly::common::{Anchor, DashType, Font, Line, Marker, MarkerSymbol, Mode, Title};
 use plotly::layout::{Axis, Legend, Shape, ShapeLine, ShapeType, ItemSizing, Margin};
-use plotly::{ImageFormat, Layout, Plot, Scatter};
+use plotly::{plot, ImageFormat, Layout, Plot, Scatter};
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum LegendAl{
@@ -27,6 +27,9 @@ pub struct PlotPar{
     pub height: usize,
     pub xlab: String,
     pub ylab: String,
+    pub log_x: bool,
+    pub log_y: bool,
+    pub range_y: [f64; 2],
     pub title: String,
     pub flnm: String,
     pub show_legend: bool,
@@ -46,6 +49,9 @@ impl PlotPar{
             height,
             xlab: format!("{}", xlab),
             ylab: format!("{}", ylab),
+            log_x: false,
+            log_y: false,
+            range_y: [0.0; 2],
             title: format!("{}", title),
             flnm: format!("{}", flnm),
             show_legend: true,
@@ -201,11 +207,20 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         Title::new(&plot_par.xlab)
             .font(Font::new().size(fsz_axes).color(forecol).family(&plot_par.font_family)));
 
-    let axisy = axis
+    let mut axisy = axis
         .clone()
         .title(Title::new(&plot_par.ylab)
-            .font(Font::new().size(fsz_axes).color(forecol).family(&plot_par.font_family)))
-        .tick_angle(0.0).exponent_format(plotly::common::ExponentFormat::SmallE); //.type_(plotly::layout::AxisType::Log);
+            .font(Font::new().size(fsz_axes).color(forecol).family(&plot_par.font_family)));
+
+    if plot_par.log_y {
+        axisy = axisy.tick_angle(0.0).exponent_format(plotly::common::ExponentFormat::SmallE).type_(plotly::layout::AxisType::Log)
+    } else {
+        axisy = axisy.tick_angle(270.0)
+    };
+
+    if plot_par.range_y[1] > crate::consts::TOLERANCE {
+        axisy = axisy.fixed_range(true).range(plot_par.range_y.to_vec())
+    }
 
     let line_top = Shape::new()
         .shape_type(ShapeType::Line)

@@ -29,6 +29,7 @@ pub struct PlotPar{
     pub ylab: String,
     pub log_x: bool,
     pub log_y: bool,
+    pub range_x: [f64; 2],
     pub range_y: [f64; 2],
     pub title: String,
     pub flnm: String,
@@ -51,6 +52,7 @@ impl PlotPar{
             ylab: format!("{}", ylab),
             log_x: false,
             log_y: false,
+            range_x: [0.0; 2],
             range_y: [0.0; 2],
             title: format!("{}", title),
             flnm: format!("{}", flnm),
@@ -203,7 +205,7 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         .show_grid(true)
         .grid_color(gridcol).auto_margin(true);
 
-    let axisx = axis.clone().title(
+    let mut axisx = axis.clone().title(
         Title::new(&plot_par.xlab)
             .font(Font::new().size(fsz_axes).color(forecol).family(&plot_par.font_family)));
 
@@ -218,7 +220,11 @@ pub fn line_plot(x: &Vec<Vec<f64>>, y: &Vec<Vec<f64>>, plot_par: &PlotPar) {
         axisy = axisy.tick_angle(270.0)
     };
 
-    if plot_par.range_y[1] > crate::consts::TOLERANCE {
+    if plot_par.range_x[0] > crate::consts::TOLERANCE || plot_par.range_x[1] > crate::consts::TOLERANCE {
+        axisx = axisx.fixed_range(true).range(plot_par.range_x.to_vec())
+    }
+
+    if plot_par.range_y[0] > crate::consts::TOLERANCE || plot_par.range_y[1] > crate::consts::TOLERANCE {
         axisy = axisy.fixed_range(true).range(plot_par.range_y.to_vec())
     }
 

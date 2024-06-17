@@ -87,6 +87,7 @@ impl State {
             * self.initial_parameters.temperature * self.initial_parameters.donor_conc
             * self.initial_parameters.accept_conc / self.initial_parameters.eff_mass_e
             / (self.initial_parameters.donor_conc + self.initial_parameters.accept_conc);
+        // Richardson's constant for kA/cm^2
         self.secondary_parameters.richardson_constant = 1e11*E_H*self.initial_parameters.eff_mass_e
             * (K_BOLTZMANN * self.initial_parameters.temperature).powi(2)
             / 2.0 / PI.powi(2) / H2_M0;
@@ -121,8 +122,9 @@ impl State {
         if self.variable_data.upper_limit_b < 0.0 {
             self.variable_data.upper_limit_b = 0.0
         }
+        //self.variable_data.lower_limit_a = 0.0
         self.variable_data.lower_limit_a = (self.secondary_parameters.delta_phi - self.initial_parameters.band_gap - self.variable_data.voltage + self.secondary_parameters.fermi_p)
-        / K_BOLTZMANN / self.initial_parameters.temperature - 3.0;
+        / K_BOLTZMANN / self.initial_parameters.temperature - 5.0;
         if self.variable_data.lower_limit_a < 0.0 {
             self.variable_data.lower_limit_a = 0.0
         }

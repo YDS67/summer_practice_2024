@@ -52,7 +52,7 @@ fn setup() -> Result<InitialMessage, String> {
         r"\( V_{min}, ~V \)".to_string(),
         r"\( V_{max}, ~V \)".to_string(),
         r"\( N_{points} \)".to_string(),
-        r"Plot maximum".to_string(),
+        r"\( I_{max}, kA/cm^2 \)".to_string(),
     ];
     Ok(InitialMessage {
         num: 11,
@@ -91,7 +91,7 @@ fn calculate(
     let mut plot_par = plot::PlotPar::new(
         1600, 1080,
         "Voltage, V", 
-        "Current density, mA/cm<sup>2</sup>", 
+        "Current density, kA/cm<sup>2</sup>", 
         &title, 
         &flnm,
         vec![

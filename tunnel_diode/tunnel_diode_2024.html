@@ -698,7 +698,7 @@ k^{2}T^{2}}{2\pi^2K}\)</span></td>
 </div>
 <div id="туннельный-ток" class="section level3">
 <h3>Туннельный ток</h3>
-<p><span class="math display">\[I_{1}\left(V\right)=A\int_{0}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du
+<p><span class="math display">\[I_{1}\left(V\right)=A\int_{a}^{b}\frac{u\ln\left(1+w_{0}e^{-u}\right)}{u+\left(\Delta\Phi-eV\right)^{3}/W^{3}}du
 \tag{7}\]</span></p>
 </div>
 <div id="диодный-ток" class="section level3">
@@ -706,23 +706,26 @@ k^{2}T^{2}}{2\pi^2K}\)</span></td>
 <p><span class="math display">\[I_{2}\left(V\right)=A\cdot
 s_{0}\left[\exp\left(\frac{eV}{kT}\right)-1\right] \tag{8}\]</span></p>
 </div>
-<div id="предел-интегрирования" class="section level3">
-<h3>Предел интегрирования</h3>
+<div id="пределы-интегрирования" class="section level3">
+<h3>Пределы интегрирования</h3>
+<p>Нижний предел определяется нижней границей, где ещё есть дырки
+(пустые места) в валентной зоне p-области, чтобы туда могли
+туннелировать электроны.</p>
+<p><span class="math display">\[a=\frac{\Delta\Phi-E_{g}-|E_{Fp}-E_v|-5kT-eV}{kT}&gt;0\qquad
+\tag{9}\]</span> <span class="math display">\[a = 0, \qquad eV &gt;
+\Delta\Phi-E_{g}-|E_{Fp}-E_v|-5kT\]</span> Нижний предел тока должен
+быть <span class="math inline">\(a \geq 0\)</span>, поэтому если
+выражение (9) даёт отрицательную величину, мы приравниваем его к нулю.
+<span class="math inline">\(5kT\)</span> выбрано из-за характерной формы
+распределения Ферми, которое на этом расстоянии от уровня Ферми спадает
+почти до нуля.</p>
+<p>Верхний предел определяется границей валентной зоны p-области, потому
+что в запрещённую зону электроны туннелировать не могут.</p>
+<p><span class="math display">\[b=\frac{\Delta\Phi-E_{g}-eV}{kT}&gt;0,\qquad
+eV&lt;\Delta\Phi-E_{g} \tag{10}\]</span> <span class="math display">\[b=0, \qquad eV \geq \Delta\Phi-E_{g}\]</span></p>
 <p>Верхний предел интегрирования туннельного тока станет равным нулю для
 предельного значения напряжения, после которого туннелирование полностью
 прекратится. После этого надо учитывать только диодный ток.</p>
-<p><span class="math display">\[b=\frac{\Delta\Phi-E_{g}-eV}{kT}&gt;0,\qquad
-eV&lt;\Delta\Phi-E_{g} \tag{9}\]</span></p>
-<p>Для численного интегрирования удобнее заменить переменную следующим
-образом:</p>
-<p><span class="math display">\[u = b r\]</span></p>
-<p>Тогда верхний предел интегрирования станет равен 1, и интеграл пример
-вид:</p>
-<p><span class="math display">\[I_{1}\left(V\right)=A b^2
-\int_{0}^{1}\frac{r\ln\left(1+w_{0}e^{-br}\right)}{br+\left(\Delta\Phi-eV\right)^{3}/W^{3}}dr
-\tag{10}\]</span></p>
-<p>Теперь можно использовать методы численного интегрирования, к примеру
-квадратуры Гаусса-Лежандра или квадратуры Гаусса-Кронрода.</p>
 </div>
 </div>
 </div>
